@@ -4,9 +4,7 @@ body {
   font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
 }
-.app.darkMode {
-  background-color: var();
-}
+
 
 :root {
   --bright-blue: hsl(220, 98%, 61%);
@@ -25,20 +23,25 @@ body {
 --light-grayish-blue: hsl(234, 39%, 85%);
 --light-grayish-blue: hsl(236, 33%, 92%);
 --dark-grayish-blue: hsl(234, 11%, 52%);
---very-dark-grayish-blue: hsl(233, 14%, 35%)
+--very-dark-grayish-blue: hsl(233, 14%, 35%);
 --very-dark-grayish-blue: hsl(237, 14%, 26%);
 }
 
 
 .container {
-  max-width: 1400px;
+  /* max-width: 1400px; */
+  background-color: var(--very-light-gray);
+}
+
+.container.darkMode {
+  background-color: var(--very-dark-blue);
 }
 
 .main {
   width: 600px;
   height: auto;
   position: relative;
-  top: -200px;
+  top: -250px;
   left: 25%;
 }
 .hero-img {
@@ -48,36 +51,130 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.hero-img.darkMode {
+  background-image: url('/public/images/bg-desktop-dark.jpg');
+}
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
 }
 
 .logo{
   font-weight: 700;
   color: white;
 }
+.moon {
+  background-image: url('/public/images/icon-moon.svg');
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.moon.darkMode {
+  background-image: url('/public/images/icon-sun.svg');
+}
 
 .input-form {
   padding: 20px;
-  background-color: white;
+  background-color: var(--very-light-gray);
   display: inline-block;
   width: 93%;
   border-radius: 10px;
   display: flex;
   align-items: center;
+  box-shadow: 0 0 20px black;
+}
+.input-form.darkMode {
+  background-color: var(--very-dark-grayish-blue);
+}
+.input-form.darkMode ::placeholder {
+  color: var(--dark-grayish-blue)
 }
 
 .type {
   border: none;
   outline: none;
   font-size: 18px;
+  background-color: transparent;
 }
 
 .radio{
   width:25px;
   height: 25px;
   margin-right: 10px;
+  background-color: transparent;
+}
+
+.theme-toggle {
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  opacity: 0.7;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  padding-left: 11px;
+  
+}
+
+.todo-container {
+  background-color: var(--very-light-gray);
+  margin-top: 40px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 20px black;
+}
+
+.todo-container.darkMode {
+  background-color: var(--very-dark-grayish-blue);
+}
+
+hr {
+  max-width: 100%;
+  color: gray;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.todo-text p{
+  font-size: 18px;
+  color: var(--very-dark-grayish-blue);
+}
+
+.todo-text.darkMode p{
+  color: white;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 10px;
+  margin: 10px;
+}
+.footer-menu span {
+  color: var(--dark-grayish-blue);
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.state span{
+  padding-right: 15px;
+}
+
+.instruction {
+  padding-left: 25%;
+  padding-top: 10%;
+}
+
+.instruction p {
+  color: var(--dark-grayish-blue);
 }
