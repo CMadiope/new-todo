@@ -1,38 +1,83 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+}
+.app.darkMode {
+  background-color: var();
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --bright-blue: hsl(220, 98%, 61%);
+  --check-ackground: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+
+  /* light theme */
+  --very-light-gray: hsl(0, 0%, 98%);
+  --very-light-grayish-blue: hsl(236, 33%, 92%);
+  --light-grayish-blue: hsl(233, 11%, 84%);
+  --dark-grayish-blue: hsl(236, 9%, 61%);
+  --very-dark-grayish-blue: hsl(235, 19%, 35%);
+
+  /* dark theme */
+  --very-dark-blue: hsl(235, 21%, 11%);
+--very-dark-desaturated-blue: hsl(235, 24%, 19%);
+--light-grayish-blue: hsl(234, 39%, 85%);
+--light-grayish-blue: hsl(236, 33%, 92%);
+--dark-grayish-blue: hsl(234, 11%, 52%);
+--very-dark-grayish-blue: hsl(233, 14%, 35%)
+--very-dark-grayish-blue: hsl(237, 14%, 26%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.container {
+  max-width: 1400px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main {
+  width: 600px;
+  height: auto;
+  position: relative;
+  top: -200px;
+  left: 25%;
+}
+.hero-img {
+  background-image: url('/public/bg-desktop-light.jpg');
+  width: 100vw;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+
+.logo{
+  font-weight: 700;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.input-form {
+  padding: 20px;
+  background-color: white;
+  display: inline-block;
+  width: 93%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.type {
+  border: none;
+  outline: none;
+  font-size: 18px;
+}
+
+.radio{
+  width:25px;
+  height: 25px;
+  margin-right: 10px;
 }
