@@ -5,10 +5,13 @@ body {
   font-size: 18px;
 }
 
-
 :root {
   --bright-blue: hsl(220, 98%, 61%);
-  --check-ackground: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --check-ackground: linear-gradient(
+    to right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
 
   /* light theme */
   --very-light-gray: hsl(0, 0%, 98%);
@@ -19,14 +22,13 @@ body {
 
   /* dark theme */
   --very-dark-blue: hsl(235, 21%, 11%);
---very-dark-desaturated-blue: hsl(235, 24%, 19%);
---light-grayish-blue: hsl(234, 39%, 85%);
---light-grayish-blue: hsl(236, 33%, 92%);
---dark-grayish-blue: hsl(234, 11%, 52%);
---very-dark-grayish-blue: hsl(233, 14%, 35%);
---very-dark-grayish-blue: hsl(237, 14%, 26%);
+  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+  --light-grayish-blue: hsl(234, 39%, 85%);
+  --light-grayish-blue: hsl(236, 33%, 92%);
+  --dark-grayish-blue: hsl(234, 11%, 52%);
+  --very-dark-grayish-blue: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue: hsl(237, 14%, 26%);
 }
-
 
 .container {
   /* max-width: 1400px; */
@@ -45,29 +47,28 @@ body {
   left: 25%;
 }
 .hero-img {
-  background-image: url('/public/bg-desktop-light.jpg');
+  background-image: url("/public/bg-desktop-light.jpg");
   width: 100vw;
   height: 300px;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .hero-img.darkMode {
-  background-image: url('/public/images/bg-desktop-dark.jpg');
+  background-image: url("/public/images/bg-desktop-dark.jpg");
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
 }
 
-.logo{
+.logo {
   font-weight: 700;
   color: white;
 }
 .moon {
-  background-image: url('/public/images/icon-moon.svg');
+  background-image: url("/public/images/icon-moon.svg");
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
@@ -75,7 +76,7 @@ body {
 }
 
 .moon.darkMode {
-  background-image: url('/public/images/icon-sun.svg');
+  background-image: url("/public/images/icon-sun.svg");
 }
 
 .input-form {
@@ -92,7 +93,7 @@ body {
   background-color: var(--very-dark-grayish-blue);
 }
 .input-form.darkMode ::placeholder {
-  color: var(--dark-grayish-blue)
+  color: var(--dark-grayish-blue);
 }
 
 .type {
@@ -101,12 +102,67 @@ body {
   font-size: 18px;
   background-color: transparent;
 }
+.type.darkMode {
+  color: var(--very-light-gray);
+}
 
-.radio{
+/* .radio{
   width:25px;
   height: 25px;
   margin-right: 10px;
   background-color: transparent;
+} */
+.label-main {
+  display: block;
+  cursor: pointer;
+  font-size: 20px;
+}
+input[type="radio"] {
+  display: none;
+}
+
+.check-mark {
+  height: 25px;
+  width: 25px;
+  color: black;
+  background-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  border: 2px solid var(--very-light-grayish-blue);
+}
+
+.label-main:hover input ~ .check-mark {
+  background-color: var(--very-light-grayish-blue);
+}
+
+.label-main:active input ~ .check-mark {
+  background-color: var(--check-ackground);
+}
+
+.label-main:checked ~ .check-mark {
+  background: var(--check-ackground);
+}
+
+.check-mark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.label-main:checked ~ .check-mark:after {
+  display: block;
+}
+
+.label-main .check-mark:after {
+  left: 8px;
+  bottom: 5px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .theme-toggle {
@@ -121,7 +177,6 @@ body {
   display: flex;
   align-items: center;
   padding-left: 11px;
-  
 }
 
 .todo-container {
@@ -143,12 +198,12 @@ hr {
   padding-right: 0 !important;
 }
 
-.todo-text p{
+.todo-text p {
   font-size: 18px;
   color: var(--very-dark-grayish-blue);
 }
 
-.todo-text.darkMode p{
+.todo-text.darkMode p {
   color: white;
 }
 
@@ -166,7 +221,7 @@ hr {
   font-weight: 700;
 }
 
-.state span{
+.state span {
   padding-right: 15px;
 }
 
@@ -177,4 +232,18 @@ hr {
 
 .instruction p {
   color: var(--dark-grayish-blue);
+}
+
+.add {
+  border-radius: 50%;
+  border: none;
+  width: 25px;
+  height: 25px;
+  background-color: var(--very-light-gray);
+  border: 2px solid var(--very-light-grayish-blue);
+}
+
+.add:hover{
+  background-color: var(--very-light-grayish-blue);
+  scale: 1.2;
 }

@@ -1,12 +1,52 @@
 import React from "react";
 import "../App.css";
-import { useState } from "react";
+import { useState, useReducer } from "react";
+import { v4 as uuidv4 } from "uuid";
+
+const initialTodoState = {
+  todos: [],
+  completed: [],
+  activeTodos: [],
+  remainingTodos: 0,
+};
+
+const todoReducer = (prevState, action) => {
+  switch (action.type) {
+    case "ADD_TODO": {
+      const newState = {
+        todos: [...prevState.todos, action.playload],
+        remainingTodos: prevState.remainingTodos + 1,
+        activeTodos: [...prevState.activeTodos, action.playload],
+      };
+      // console.log("after add note", newState);
+      return newState;
+    }
+    case "MARK_COMPLETE": {
+    }
+    default:
+      return initialTodoState;
+  }
+};
 
 const Todo = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const [todoInput, setTodoInput] = useState("");
+  const [todoState, dispatch] = useReducer(todoReducer, initialTodoState);
 
   const switchMode = () => {
     setDarkMode((prevState) => !prevState);
+  };
+
+  const addTodo = (event) => {
+    event.preventDefault();
+
+    if (todoInput === "") return;
+
+    const newTodo = {
+      id: uuidv4(),
+      text: todoInput,
+    };
+    dispatch({ type: "ADD_TODO", playload: newTodo });
   };
 
   return (
@@ -21,48 +61,37 @@ const Todo = () => {
         </div>
         <div className='inputs'>
           <form className={`input-form ${darkMode ? "darkMode" : ""}`}>
-            <input className='radio' type='radio' />
+            {/* <label className='label-main'>
+              <input className='radio' type='radio' checked />
+              <span className='check-mark'></span>
+            </label> */}
+            <button className='add' onClick={addTodo}>
+              +
+            </button>
+
             <input
-              className='type'
+              className={`type ${darkMode ? "darkMode" : ""}`}
               type='text'
+              value={todoInput}
               placeholder='Create a new todo...'
+              onChange={(event) => setTodoInput(event.target.value)}
             />
           </form>
         </div>
         <div className={`todo-container ${darkMode ? "darkMode" : ""}`}>
-          <div className='main-container'>
-            <div className='todo'>
-              <div className='todo-check'>
-                <input type='radio' className='radio' />
+          {todoState.todos.map((todo) => (
+            <div className='main-container'>
+              <div className='todo'>
+                <div className='todo-check'>
+                  <input type='radio' className='radio' />
+                </div>
+                <div className={`todo-text ${darkMode ? "darkMode" : ""}`}>
+                  <p>{todo.text}</p>
+                </div>
               </div>
-              <div className={`todo-text ${darkMode ? "darkMode" : ""}`}>
-                <p>Compile online portfolio</p>
-              </div>
+              <hr />
             </div>
-            <hr />
-          </div>
-          <div className='main-container'>
-            <div className='todo'>
-              <div className='todo-check'>
-                <input type='radio' className='radio' />
-              </div>
-              <div className={`todo-text ${darkMode ? "darkMode" : ""}`}>
-                <p>Go for afternoon run</p>
-              </div>
-            </div>
-            <hr />
-          </div>
-          <div className='main-container'>
-            <div className='todo'>
-              <div className='todo-check'>
-                <input type='radio' className='radio' />
-              </div>
-              <div className={`todo-text ${darkMode ? "darkMode" : ""}`}>
-                <p>Read for 1 hour</p>
-              </div>
-            </div>
-            <hr />
-          </div>
+          ))}
 
           <div className='footer-menu'>
             <div className='counter'>
